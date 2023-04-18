@@ -20,6 +20,8 @@ h2 {
     margin-bottom: 0.8rem;
     color: red;
     font-weight: 900;
+    text-align:center;
+    
 }
 /* links e botões=============================*/
 a {
@@ -32,8 +34,8 @@ a:hover {
 }
 
 .button.new {
-    display:inline-block;
     margin-bottom: .8rem;
+    display: inline-block;
 }
 
 
@@ -101,6 +103,7 @@ header {
     width: 100%;
     border-spacing: 0 0.8rem;
     font-size: 23px;
+    overflow-x: auto;
 }
 
 table th {
