@@ -158,3 +158,16 @@ p.baseboard {
     color: darkslategrey;
     opacity: 0.9;
 }
+/*=========================================
+@media (max-width: 100px) {
+    html{
+        font-size: 87.5%;
+    }
+    #balance {
+        display: grid;
+        grid-template-columns:1fr 1fr 1fr;
+        gap: 2rem;
+    }
+
+}
+==============================================*/
