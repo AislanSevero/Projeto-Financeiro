@@ -48,7 +48,9 @@
 
         </section id="transaction">
         <h2>Transações</h2>
-        <a href="#" class="button new">+ Nova transação</a>
+        <a href="#"
+        onclick="Modal.open()"
+        class="button new">+ Nova transação</a>
         <table id="data-table">
             <thead>
                 <tr>
@@ -87,12 +89,12 @@
         </table>
     </main>
 
-    <div class="modal-overlay active">
+    <div class="modal-overlay">
         <div class="modal">
             <div id="form">
                 <h2>Nova Transação</h2>
                 <form action="">
-                    <div class="input-grup">
+                    <div class="input-group">
                         <label for="description"></label>
                         <input type="text"
                                id="description"
@@ -101,13 +103,29 @@
                             />
                     </div>
 
-                    <div class="input-grup">
+                    <div class="input-group">
                         <label for="amount"></label>
                         <input type="number"
                                id="amount"
                                name="amount"
-                               placeholder="Valor"
+                               placeholder="0,00"
                             />
+                            <small class="help">Use o sinal -(negativo) para despesas</small>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="date"></label>
+                        <input type="date"
+                               id="date"
+                               name="date"
+                            />
+                    </div>
+
+                    <div class="input-group actions">
+                        <a
+                        onclick="Modal.close()" 
+                        href="#" class="button cancel">Cancelar</a>
+                        <button>Salvar</button>
                     </div>
                 </form>
             </div>
@@ -116,6 +134,24 @@
 
 
         <p class="baseboard">Financeiro</p>
+
+<script>
+    const Modal = {
+    open(){
+        document
+        .querySelector('.modal-overlay')
+        .classList
+        .add('active')
+    },
+    close(){
+        document
+        .querySelector('.modal-overlay')
+        .classList
+        .remove('active')
+    }
+}
+</script>
+
 </body>
 
 </html>

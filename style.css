@@ -32,12 +32,42 @@ a {
 a:hover {
     color: darkslategrey
 }
+button {
+    width: 100%;
+    height: 50px;
+    border: none;
+    color:white;
+    background: rgb(5, 131, 37);
+    font-size: 17px;
+    border-radius: 0.2rem;
+    padding: 0;
+    cursor: pointer;
+}
+
+button:hover {
+    background: rgb(6, 175, 6);
+}
 
 .button.new {
     margin-bottom: .8rem;
     display: inline-block;
 }
 
+.button.cancel {
+    color: red;
+    border: 2px red solid;
+    border-radius: 0.2rem;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button.cancel:hover {
+    color: white;
+    background: rgb(175, 7, 7);
+    border:none
+}
 
 header {
     background: rgb(113, 160, 67);
@@ -143,7 +173,7 @@ td.income {
 td.expense {
     color: red;
 }
-/* modal ==============*/
+/* Modal =====================================*/
 .modal-overlay {
     width: 100%;
     height: 100%;
@@ -162,9 +192,46 @@ td.expense {
     visibility: visible;
 }
 .modal {
-    background: white;
-    padding: 2.4rem;
-    
+    background: rgb(204, 194, 194);
+    padding: 5rem;
+}
+
+/* Form =====================================*/
+#form {
+    max-width: 500px;
+}
+
+#form h2 {
+    margin-top: 0;
+    color:darkslategrey;
+    font-size: larger;
+    font-family:'Courier New', Courier, monospace;
+}
+
+input {
+    border: none;
+    border-radius: 0.2rem;
+    padding: 0.8rem;
+    width: 100%;
+}
+
+.input-group {
+    margin-top: 0.8rem;
+}
+
+.input-group small {
+    opacity: 0.7;
+}
+
+.input-group.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-group.actions .button,
+.input-group.actions button{
+    width: 48%;
 }
 
 table thead tr th:first-child,
