@@ -13,43 +13,59 @@ const Modal = {
     }
 }
 
-const transactions = [
-    {
-        id: 1,
-        description: 'luz',
-        amount: -50000,
-        date: '23/01/2021',
-    },
-    {
-        id: 2,
-        description: 'website',
-        amount: -500000,
-        date: '23/01/2021',
-    },
-    {
-        id: 3,
-        description: 'internet',
-        amount: -20000,
-        date: '23/01/2021',
-    },
-    {
-        id: 4,
-        description: 'app',
-        amount: 20000,
-        date: '23/01/2021',
-    },
-]
-
-
 const Transaction = {
+    all: [
+        {
+            description: 'luz',
+            amount: -50000,
+            date: '23/01/2021',
+        },
+        {
+            description: 'website',
+            amount: 500000,
+            date: '23/01/2021',
+        },
+        {
+            description: 'internet',
+            amount: -20000,
+            date: '23/01/2021',
+        },
+        {
+            description: 'app',
+            amount: 20000,
+            date: '23/01/2021',
+        },
+    ],
+    add(transaction) {
+        Transaction.all.push(transaction)
+
+        App.reload()
+    },
+    remove(transaction) {
+        Transaction.all.splice(index, 1)
+        App.reload()
+    },
+
     incomes() {
-        //somar as entadas
+        let income = 0;
+        Transaction.all.forEach(transaction => {
+            if (transaction.amount > 0) {
+                income += transaction.amount;
+            }
+        })
+        return income;
     },
     expenses() {
-        //somar as saidas
+        let expense = 0;
+        Transaction.all.forEach(transaction => {
+            if (transaction.amount < 0) {
+                expense += transaction.amount;
+            }
+        })
+        return expense;
     },
     total() {
-        //entradas - saidas
+        return Transaction.incomes() + Transaction.expenses();
     }
 }
 
@@ -62,21 +78,32 @@ const DOM = {
 
         DOM.transactionsContainer.appendChild(tr)
     },
+
     innerHTMLTransaction(transaction) {
         const CSSclass = transaction.amount > 0 ? "income" : "expense"
 
         const amount = Utils.formatCurrency(transaction.amount)
 
         const html = `
-            <td class="description">Luz</td>
-            <td class="expense">- R$ 500,00</td>
-            <td class="date">23/01/2021</td>
+            <td class="description">${transaction.description}</td>
+            <td class="${CSSclass}">${amount}</td>
+            <td class="date">${transaction.date}</td>
             <td>
                   <img src="./imagens/lixeira.png" alt="remover transação" style="width: 40px; height: 25px;">
             </td>
         `
 
         return html
+    },
+
+    updateBalance() {
+        document.getElementById('incomeDisplay').innerHTML = Utils.formatCurrency(Transaction.incomes())
+        document.getElementById('expenseDisplay').innerHTML = Utils.formatCurrency(Transaction.expenses())
+        document.getElementById('totalDisplay').innerHTML = Utils.formatCurrency(Transaction.total())
+    },
+
+    clearTransactions() {
+        DOM.transactionsContainer.innerHTML = ""
     }
 }
 
@@ -96,3 +123,41 @@ const Utils = {
         return signal + value
     }
 }
+
+const Form = {
+    description: document.querySelector('input#description'),
+    amount: document.querySelector('input#amount'),
+    date: document.querySelector('input#date'),
+
+    getValues() {
+        return{
+        description: Form.description.value,
+        amount: Form.amount.value,
+        date: Form.date.value
+    }
+},  
+
+    validateField() {
+
+    },
+    submit(event) {
+event.preventDefault()
+Form.validateField()
+    }
+}
+
+const App = {
+    init() {
+        Transaction.all.forEach(transaction => {
+            DOM.addTransaction(transaction)
+        })
+
+        DOM.updateBalance()
+    },
+    reload() {
+        DOM.clearTransactions()
+        App.init()
+    },
+}
+App.init()
+

@@ -26,21 +26,21 @@
                 <h3>Entradas</h3>
                 <img src="./imagens/imagem_de_entradas.png" alt="imagem_de_entradas"
                     style="width: 130px; height: 90px; float: right;">
-                <p>R$ 5000,00</p>
+                <p id="incomeDisplay">R$ 5000,00</p>
             </div>
 
             <div class="card">
                 <h3>Saidas</h3>
                 <img src="./imagens/imagem_de_saidas.png" alt="imagem_de_saidas"
                     style="width: 150px; height: 100px; float: right;">
-                <p>R$ 2000,00</p>
+                <p id="expenseDisplay">R$ 2000,00</p>
             </div>
 
             <div class="card total">
                 <h3>Total</h3>
                 <img src="./imagens/imagem_de_total.png" alt="imagem_de_total"
                     style="width: 100px; height: 50px; float:right;">
-                <p>R$ 3000,00</p>
+                <p id="totalDisplay">R$ 3000,00</p>
                 
             </div>
         </section>
@@ -61,30 +61,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class="description">Luz</td>
-                    <td class="expense">- R$ 500,00</td>
-                    <td class="date">23/01/2021</td>
-                    <td>
-                        <img src="./imagens/lixeira.png" alt="remover transação" style="width: 40px; height: 25px;">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="description">Criação de Website</td>
-                    <td class="income">R$ 5000,00</td>
-                    <td class="date">23/01/2021</td>
-                    <td>
-                        <img src="./imagens/lixeira.png" alt="remover transação" style="width: 40px; height: 25px;">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="description">Internet</td>
-                    <td class="expense">-R$ 200,00</td>
-                    <td class="date">23/01/2021</td>
-                    <td>
-                        <img src="./imagens/lixeira.png" alt="remover transação" style="width: 40px; height: 25px;">
-                    </td>
-                </tr>
+
             </tbody>
         </table>
     </main>
@@ -93,7 +70,7 @@
         <div class="modal">
             <div id="form">
                 <h2>Nova Transação</h2>
-                <form action="">
+                <form action="" onsubmit="Form.submit(event)">
                     <div class="input-group">
                         <label for="description"></label>
                         <input type="text"
